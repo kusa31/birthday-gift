@@ -1,0 +1,985 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: "Poppins", Arial, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe6f2,
+            #fff5fa,
+            #ffd9eb
+        );
+
+    color: #9b3565;
+    text-align: center;
+
+    overflow-x: hidden;
+}
+
+
+/* MAIN CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 50px 20px;
+}
+
+
+/* TITLE */
+
+h1 {
+    font-size: clamp(35px, 6vw, 65px);
+
+    margin: 10px 0;
+
+    color: #b83270;
+
+    text-shadow:
+        2px 3px 0 #ffffff;
+
+    animation: fadeDown 1s ease;
+}
+
+
+.subtitle {
+    font-size: 20px;
+
+    color: #79435c;
+
+    margin-bottom: 30px;
+
+    animation: fadeUp 1.3s ease;
+}
+
+
+/* MUSIC BUTTON */
+
+.music-btn {
+    border: none;
+
+    padding: 15px 28px;
+
+    border-radius: 30px;
+
+    background: #ffffff;
+
+    color: #9c4670;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 20px
+        rgba(170, 70, 120, 0.18);
+
+    transition: 0.3s;
+}
+
+
+.music-btn:hover {
+    transform: scale(1.08);
+
+    background: #fff0f7;
+}
+
+
+/* GIFT */
+
+.gift-area {
+    margin-top: 65px;
+
+    cursor: pointer;
+
+    display: inline-block;
+}
+
+
+.gift {
+    position: relative;
+
+    width: 180px;
+    height: 140px;
+
+    margin: auto;
+
+    animation:
+        floating
+        2.5s
+        infinite
+        ease-in-out;
+}
+
+
+.box {
+    position: absolute;
+
+    bottom: 0;
+    left: 20px;
+
+    width: 140px;
+    height: 105px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d45a9b,
+            #ed79b5
+        );
+
+    border-radius:
+        5px
+        5px
+        15px
+        15px;
+
+    box-shadow:
+        0 12px 25px
+        rgba(160, 55, 110, .2);
+}
+
+
+.box::before {
+    content: "";
+
+    position: absolute;
+
+    left: 58px;
+
+    width: 25px;
+    height: 100%;
+
+    background: #f8a9cf;
+}
+
+
+.lid {
+    position: absolute;
+
+    top: 10px;
+    left: 10px;
+
+    width: 160px;
+    height: 35px;
+
+    background: #c94c91;
+
+    border-radius: 8px;
+
+    z-index: 2;
+
+    transition: .6s;
+}
+
+
+.ribbon {
+    position: absolute;
+
+    width: 25px;
+    height: 35px;
+
+    background: #f8a9cf;
+
+    left: 68px;
+    top: 0;
+
+    z-index: 3;
+}
+
+
+.bow-left,
+.bow-right {
+    position: absolute;
+
+    width: 45px;
+    height: 30px;
+
+    background: #f8a9cf;
+
+    top: -20px;
+
+    border-radius: 50%;
+}
+
+
+.bow-left {
+    left: 45px;
+
+    transform: rotate(-25deg);
+}
+
+
+.bow-right {
+    right: 45px;
+
+    transform: rotate(25deg);
+}
+
+
+/* MESSAGE */
+
+.message {
+    max-width: 600px;
+
+    margin: 55px auto 0;
+
+    padding: 30px;
+
+    background:
+        rgba(255, 255, 255, .72);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(180, 80, 130, .15);
+
+    backdrop-filter: blur(8px);
+
+    animation:
+        fadeUp
+        1.5s
+        ease;
+}
+
+
+.message h2 {
+    color: #c34882;
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+}
+
+
+.message p {
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #765261;
+}
+
+
+.click-text {
+    margin-top: 25px;
+
+    font-size: 15px;
+
+    color: #b04c7b;
+}
+
+
+/* TULIPS */
+
+.flowers {
+    margin-top: 40px;
+
+    font-size: 55px;
+
+    letter-spacing: 8px;
+
+    animation:
+        flowerMove
+        3s
+        infinite
+        ease-in-out;
+}
+
+
+/* SURPRISE */
+
+.surprise {
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: #fff0f7;
+
+    animation:
+        pop
+        .7s
+        ease;
+}
+
+
+.surprise h3 {
+    font-size: 27px;
+
+    color: #c13e78;
+}
+
+
+.surprise p {
+    color: #70495a;
+
+    line-height: 1.7;
+}
+
+
+/* CONFETTI */
+
+.confetti {
+    position: fixed;
+
+    top: -20px;
+
+    width: 10px;
+    height: 18px;
+
+    animation:
+        fall
+        linear
+        forwards;
+
+    z-index: 100;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes floating {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+@keyframes fadeDown {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes pop {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(.5);
+    }
+
+    80% {
+        transform:
+            scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+@keyframes flowerMove {
+
+    0%, 100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+@keyframes fall {
+
+    to {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding-top: 35px;
+    }
+
+    .message {
+        padding: 22px;
+    }
+
+    .message p {
+        font-size: 15px;
+    }
+}
+/* ========================================
+   MINI ENVELOPE LETTER
+======================================== */
+
+.letter-section {
+    margin-top: 80px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+
+.letter-title {
+    color: #c34882;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+
+.letter-subtitle {
+    color: #8b536d;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+
+/* ENVELOPE */
+
+.envelope-wrapper {
+    display: inline-block;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+
+.envelope {
+    position: relative;
+
+    width: 280px;
+    height: 190px;
+
+    margin: auto;
+
+    transition: 0.5s;
+
+    filter:
+        drop-shadow(
+            0 15px 20px
+            rgba(160, 60, 110, 0.20)
+        );
+}
+
+
+.envelope:hover {
+    transform: translateY(-8px);
+}
+
+
+/* BACK */
+
+.envelope-back {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background: #f5a4c9;
+
+    border-radius: 5px;
+
+    z-index: 1;
+}
+
+
+/* LETTER PAPER */
+
+.letter-paper {
+    position: absolute;
+
+    left: 15px;
+    bottom: 5px;
+
+    width: 250px;
+
+    max-height: 165px;
+
+    background:
+        linear-gradient(
+            #fffdfd,
+            #fff7fa
+        );
+
+    border-radius: 5px;
+
+    padding: 20px;
+
+    overflow: hidden;
+
+    z-index: 2;
+
+    opacity: 0;
+
+    transform:
+        translateY(50px);
+
+    transition:
+        transform 0.8s ease,
+        opacity 0.5s ease;
+}
+
+
+/* LETTER CONTENT */
+
+.letter-content {
+    color: #70495a;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: left;
+}
+
+
+.letter-content h3 {
+    color: #c34882;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    margin-top: 0;
+}
+
+
+.letter-content p {
+    margin-bottom: 12px;
+}
+
+
+.letter-ending {
+    text-align: center;
+
+    color: #c34882;
+
+    font-weight: bold;
+}
+
+
+.signature {
+    text-align: right;
+
+    color: #a04470;
+
+    font-style: italic;
+
+    margin-top: 20px;
+}
+
+
+/* ENVELOPE FLAP */
+
+.envelope-flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left:
+        140px solid transparent;
+
+    border-right:
+        140px solid transparent;
+
+    border-top:
+        100px solid #ed86b6;
+
+    transform-origin: top;
+
+    transition:
+        transform 0.8s ease;
+
+    z-index: 4;
+}
+
+
+/* HEART */
+
+.envelope-heart {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    font-size: 35px;
+
+    z-index: 5;
+
+    transition: 0.4s;
+}
+
+
+/* OPEN STATE */
+
+.envelope.open .envelope-flap {
+    transform:
+        rotateX(180deg);
+}
+
+
+.envelope.open .letter-paper {
+    opacity: 1;
+
+    transform:
+        translateY(-115px);
+
+    max-height: 430px;
+
+    overflow-y: auto;
+
+    transition:
+        transform 1s ease,
+        opacity 0.6s ease;
+}
+
+
+.envelope.open .envelope-heart {
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+}
+
+
+/* LETTER SCROLLBAR */
+
+.letter-paper::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.letter-paper::-webkit-scrollbar-thumb {
+    background: #e889b5;
+
+    border-radius: 10px;
+}
+
+
+/* HINT */
+
+.envelope-hint {
+    margin-top: 20px;
+
+    color: #a54a75;
+
+    font-size: 14px;
+
+    animation:
+        pulseText
+        2s
+        infinite;
+}
+
+
+/* ANIMATION */
+
+@keyframes pulseText {
+
+    0%, 100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .envelope {
+        width: 240px;
+        height: 165px;
+    }
+
+    .envelope-flap {
+        border-left-width: 120px;
+        border-right-width: 120px;
+        border-top-width: 85px;
+    }
+
+    .letter-paper {
+        width: 210px;
+        left: 15px;
+    }
+
+    .envelope.open .letter-paper {
+        transform:
+            translateY(-120px);
+    }
+
+    .letter-content {
+        font-size: 12px;
+    }
+}
+/* ========================================
+   TULIP BOUQUET INSIDE GIFT
+======================================== */
+
+.tulip-bouquet {
+    position: absolute;
+
+    width: 180px;
+    height: 150px;
+
+    left: 0;
+    bottom: 45px;
+
+    z-index: 1;
+
+    opacity: 0;
+
+    transform:
+        translateY(70px)
+        scale(0.6);
+
+    transition:
+        transform 1s ease,
+        opacity 0.5s ease;
+}
+
+
+/* INDIVIDUAL TULIPS */
+
+.tulip {
+    position: absolute;
+
+    width: 45px;
+    height: 120px;
+
+    bottom: 0;
+}
+
+
+/* FLOWER */
+
+.tulip-head {
+    position: absolute;
+
+    font-size: 42px;
+
+    z-index: 3;
+
+    filter:
+        drop-shadow(
+            0 3px 3px
+            rgba(150, 50, 100, 0.2)
+        );
+
+    animation:
+        tulipSway
+        2s
+        infinite
+        ease-in-out;
+}
+
+
+/* STEM */
+
+.stem {
+    position: absolute;
+
+    width: 5px;
+    height: 75px;
+
+    background: #69a85b;
+
+    left: 22px;
+    top: 35px;
+
+    border-radius: 10px;
+
+    transform:
+        rotate(4deg);
+
+    z-index: 1;
+}
+
+
+/* LEAVES */
+
+.stem::before {
+    content: "";
+
+    position: absolute;
+
+    width: 22px;
+    height: 10px;
+
+    background: #78b866;
+
+    left: -17px;
+    top: 40px;
+
+    border-radius:
+        100% 0 100% 0;
+
+    transform:
+        rotate(-25deg);
+}
+
+
+.stem::after {
+    content: "";
+
+    position: absolute;
+
+    width: 22px;
+    height: 10px;
+
+    background: #78b866;
+
+    left: 0;
+    top: 52px;
+
+    border-radius:
+        0 100% 0 100%;
+
+    transform:
+        rotate(25deg);
+}
+
+
+/* TULIP POSITIONS */
+
+.tulip-1 {
+    left: 65px;
+    bottom: 35px;
+    transform: rotate(-12deg);
+}
+
+.tulip-2 {
+    left: 20px;
+    bottom: 15px;
+    transform: rotate(-20deg);
+}
+
+.tulip-3 {
+    left: 105px;
+    bottom: 18px;
+    transform: rotate(18deg);
+}
+
+.tulip-4 {
+    left: 45px;
+    bottom: 0;
+    transform: rotate(-5deg);
+}
+
+.tulip-5 {
+    left: 85px;
+    bottom: 0;
+    transform: rotate(8deg);
+}
+
+
+/* BOUQUET WRAPPER */
+
+.tulip-bouquet::after {
+    content: "🎀";
+
+    position: absolute;
+
+    bottom: -5px;
+    left: 72px;
+
+    font-size: 30px;
+
+    z-index: 5;
+}
+
+
+/* OPEN GIFT STATE */
+
+.gift.open .tulip-bouquet {
+    opacity: 1;
+
+    transform:
+        translateY(-45px)
+        scale(1);
+}
+
+
+/* TULIP SWAY */
+
+@keyframes tulipSway {
+
+    0%, 100% {
+        transform:
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            rotate(4deg);
+    }
+
+}
+</style>
+<script>
